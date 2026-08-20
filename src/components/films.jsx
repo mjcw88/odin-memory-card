@@ -10,10 +10,13 @@ function Films({ films, setFilms, score, setScore, best, setBest }) {
             film.clicked = true;
             setScore(score + 1)
             if (score >= best) setBest(score + 1)
-            setFilms(shuffleFilms(updatedFilms))
         } else {
-            console.log("FILM ALREADY CLICKED!")
+            updatedFilms.forEach(film => {
+                film.clicked = false;
+            })
+            setScore(0);
         }
+        setFilms(shuffleFilms(updatedFilms))
     }
 
     return (
