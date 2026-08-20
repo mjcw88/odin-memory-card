@@ -1,0 +1,9 @@
+.film-grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
+    gap: 1rem;
+}
+
+.film-container > img {
+    width: 100%;
+}

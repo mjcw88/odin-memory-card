@@ -1,5 +1,5 @@
 export default async () => {
-  const token = process.env.TMDB_API_TOKEN;
+  const TOKEN = process.env.TMDB_API_TOKEN;
 
   const url =
     'https://api.themoviedb.org/3/discover/movie' +
@@ -14,7 +14,7 @@ export default async () => {
     const response = await fetch(url, {
       headers: {
         accept: 'application/json',
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${TOKEN}`,
       },
     });
 
