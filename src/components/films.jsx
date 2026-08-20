@@ -2,21 +2,29 @@ import { shuffleFilms } from "../utils/shuffleFilms.js";
 import "../styles/films.css";
 
 function Films({ films, setFilms, score, setScore, best, setBest }) {
+    function handleScore(film) {
+        film.clicked = true;
+        setScore(score + 1);
+        if (score >= best) setBest(score + 1);
+    }
+
+    function resetScore(updatedFilms) {
+        updatedFilms.forEach(film => {
+            film.clicked = false;
+        })
+        setScore(0);
+    }
+
     function playTurn(id) {
         const updatedFilms = [...films];
         const film = updatedFilms.find((film) => film.id === id);
 
         if (!film.clicked) {
-            film.clicked = true;
-            setScore(score + 1)
-            if (score >= best) setBest(score + 1)
+            handleScore(film);
         } else {
-            updatedFilms.forEach(film => {
-                film.clicked = false;
-            })
-            setScore(0);
+            resetScore(updatedFilms);
         }
-        setFilms(shuffleFilms(updatedFilms))
+        setFilms(shuffleFilms(updatedFilms));
     }
 
     return (
